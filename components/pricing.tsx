@@ -102,7 +102,7 @@ export default function Pricing() {
               <div className="space-y-3">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-3 text-sm">
-                    <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{feature}</span>
                   </div>
                 ))}

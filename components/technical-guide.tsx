@@ -53,7 +53,7 @@ export default function TechnicalGuide() {
           {technicalSpecs.map((spec) => (
             <Card key={spec.title} className="p-6 border-border/50">
               <div className="flex items-start gap-3 mb-4">
-                <CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />
+                <CheckCircle className="w-6 h-6 text-accent shrink-0" />
                 <div>
                   <h3 className="font-semibold text-lg">{spec.title}</h3>
                   <p className="text-sm text-muted-foreground">{spec.description}</p>
@@ -62,7 +62,7 @@ export default function TechnicalGuide() {
               <ul className="space-y-2">
                 {spec.items.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -74,7 +74,7 @@ export default function TechnicalGuide() {
         {/* Important Note */}
         <Card className="p-6 border-accent/50 bg-accent/5">
           <div className="flex gap-4">
-            <AlertCircle className="w-6 h-6 text-accent flex-shrink-0" />
+            <AlertCircle className="w-6 h-6 text-accent shrink-0" />
             <div className="space-y-3">
               <h4 className="font-semibold">Importante: Conformidade Regulatória</h4>
               <p className="text-sm text-muted-foreground">

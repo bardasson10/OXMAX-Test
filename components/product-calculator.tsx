@@ -13,7 +13,7 @@ export default function ProductCalculator() {
   // Calculate required kg based on flow rate (m³/hour)
   const kgPerHour = ironManganese === "low" ? 50 : 100
   const requiredKg = flowRate * kgPerHour
-  const totalPrice = requiredKg * 85 // R$ 85 por kg
+  const totalPrice = requiredKg * 20 // R$ 85 por kg
 
   return (
     <section className="py-20 bg-accent/5">
@@ -139,14 +139,14 @@ export default function ProductCalculator() {
 
                 <div className="space-y-2">
                   <p className="text-sm text-muted-foreground">Preço por kg</p>
-                  <p className="text-2xl font-semibold">R$ 85,00</p>
+                  <p className="text-2xl font-semibold">R$ 20,00</p>
                 </div>
 
                 <div className="h-px bg-border/50" />
 
                 <div className="bg-background/50 rounded-lg p-4 space-y-2">
                   <p className="text-sm text-muted-foreground">Total</p>
-                  <p className="text-3xl font-bold text-accent">
+                  <p className="text-3xl pad font-bold text-accent">
                     {(totalPrice * quantity).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
                   </p>
                 </div>

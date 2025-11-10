@@ -63,7 +63,7 @@ export default function Specifications() {
               <ul className="space-y-2">
                 {spec.items.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}

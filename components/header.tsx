@@ -1,5 +1,3 @@
-"use client"
-
 import { Menu, X, Moon, Sun } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -9,15 +7,13 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="border-b border-border/40 sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="border-b border-border/40 sticky top-0 z-50 bg-background/95 backdrop-blur upports-backdrop-filter:bg-background/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">OX</span>
-            </div>
-            <span className="font-bold text-xl hidden sm:inline">OX Maxx</span>
+            <img src="/OXMAX_logo.png" alt="OX Maxx Logo" className="w-32 h-32 object-contain " />
+            {/* <span className="font-bold text-xl hidden sm:inline">OX Maxx</span> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -28,6 +24,9 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
             <a href="/#solutions" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Soluções
             </a>
+            <Link href="/compras" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Comprar
+            </Link>
             <a href="/#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Empresa
             </a>
@@ -71,13 +70,16 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
             <a href="/#solutions" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
               Soluções
             </a>
+            <Link href="/compras" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
+              Comprar
+            </Link>
             <a href="/#about" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
               Empresa
             </a>
             <a href="/#contact" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
               Contato
             </a>
-            <Link href="/compras" className="block">
+            <Link href="/compras" className="block pt-2">
               <Button className="w-full bg-accent hover:bg-accent/90 text-white">Comprar</Button>
             </Link>
           </nav>

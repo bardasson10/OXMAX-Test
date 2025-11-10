@@ -44,15 +44,15 @@ export default function HeroHome() {
             {/* Benefits List */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0" />
+                <Check className="w-5 h-5 text-accent shrink-0" />
                 <span className="text-sm text-muted-foreground">8 anos de garantia sem manutenção</span>
               </div>
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0" />
+                <Check className="w-5 h-5 text-accent shrink-0" />
                 <span className="text-sm text-muted-foreground">Filtração de 99,9% de contaminantes</span>
               </div>
               <div className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-accent flex-shrink-0" />
+                <Check className="w-5 h-5 text-accent shrink-0" />
                 <span className="text-sm text-muted-foreground">Certificado e conforme regulações</span>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function HeroHome() {
 
           {/* Right Image */}
           <div className="relative h-96 lg:h-full">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl" />
+            <div className="absolute inset-0 bg-linear-to-br from-primary/20 to-accent/20 rounded-2xl" />
             <img
               src="/sistema-filtra--o--gua-industrial-tecnologia-azul-.jpg"
               alt="Sistema de Filtração de Água OX Maxx"

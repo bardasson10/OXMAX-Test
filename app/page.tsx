@@ -1,28 +1,24 @@
-"use client"
+// app/page.tsx (Versão Nova)
 
-import { useState } from "react"
-import Header from "@/components/header"
 import HeroHome from "@/components/hero-home"
 import Features from "@/components/features"
 import Solutions from "@/components/solutions"
+import Specifications from "@/components/specifications"
 import Stats from "@/components/stats"
 import CTA from "@/components/cta"
-import Footer from "@/components/footer"
+import ContactForm from "@/components/contact-form"
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false)
-
   return (
-    <div className={isDark ? "dark" : ""}>
-      <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
-        <Header isDark={isDark} setIsDark={setIsDark} />
-        <HeroHome />
-        <Features />
-        <Solutions />
-        <Stats />
-        <CTA />
-        <Footer />
-      </div>
-    </div>
+    <>
+    {/*seções da página inicial*/}
+      <HeroHome />
+      <Features />
+      <Solutions />
+      <Specifications />
+      <Stats />
+      <CTA />
+      <ContactForm />
+    </>
   )
 }
