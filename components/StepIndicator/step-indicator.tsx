@@ -13,7 +13,7 @@ import Pricing from "@/components/pricing"
 
 export default function StepIndicator({ currentStep, totalSteps, titles }: { currentStep: number, totalSteps: number, titles: string[] }) {
   return (
-    <div className="flex justify-center w-full max-w-3xl mx-auto mb-12">
+    <div className="flex justify-center w-full max-w-3xl mx-auto ">
       <div className="flex items-center w-full justify-between">
         {titles.map((title, index) => {
           const stepId = index + 1

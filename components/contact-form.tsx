@@ -156,7 +156,7 @@ export default function ContactForm() {
               </div>
 
               <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white">
-                Confirmar Compra
+                Enviar Mensagem
               </Button>
 
               {submitted && (

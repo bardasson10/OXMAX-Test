@@ -1,8 +1,6 @@
-import React, { JSX } from "react";
-import Hero from "../hero";
+import  { JSX } from "react";
+import ProductIntro from "../product-intro";
 import ProductCalculator from "../product-calculator";
-import Pricing from "../pricing";
-import TechnicalGuide from "../technical-guide";
 import ContactForm from "../contact-form";
 import PaymentForm from "../PaymentForm/payment-form";
 
@@ -13,7 +11,7 @@ type Step = {
 };
 
 const STEPS: Step[] = [
-  { id: 1, title: "Informações do Produto", component: Hero },
+  { id: 1, title: "Informações do Produto", component: ProductIntro },
   { id: 2, title: "Cálculo de Dosagem", component: ProductCalculator },
   { id: 3, title: "Finalizar Compra", component: ContactForm },
   { id: 4, title: "Forma de Pagamento", component: PaymentForm }

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import StepIndicator from "@/components/StepIndicator/step-indicator"
 
-export default function Compras() {
+export default function ComprasPage() {
   const [currentStep, setCurrentStep] = useState(1)
   const totalSteps = STEPS.length
   const CurrentStepComponent = STEPS.find(step => step.id === currentStep)?.component
@@ -17,7 +17,7 @@ export default function Compras() {
 
     <main>
       {/* O Indicador de Etapas é renderizado em uma seção separada para espaçamento consistente */}
-      <section className="py-12 bg-background">
+      <section className="py-6 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StepIndicator
             currentStep={currentStep}

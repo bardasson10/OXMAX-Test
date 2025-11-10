@@ -18,21 +18,21 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="/#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Recursos
-            </a>
-            <a href="/#solutions" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <a href="/solucoes" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Soluções
             </a>
             <Link href="/compras" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Comprar
             </Link>
-            <a href="/#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="https://echowater.com.br/sobre-nos/" target="_blank" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Empresa
-            </a>
-            <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link href="/contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contato
-            </a>
+            </Link>
           </nav>
 
           {/* Right Section */}
@@ -42,7 +42,7 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
               className="p-2 hover:bg-muted rounded-lg transition-colors"
               aria-label="Alternar tema"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {isDark ? <Sun className="w-5 h-5 cursor-pointer" /> : <Moon className="w-5 h-5 cursor-pointer" />}
             </button>
 
             {/* Mobile menu button */}
@@ -67,7 +67,7 @@ export default function Header({ isDark, setIsDark }: { isDark: boolean; setIsDa
             <a href="/#features" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
               Recursos
             </a>
-            <a href="/#solutions" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
+            <a href="/solucoes" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">
               Soluções
             </a>
             <Link href="/compras" className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors">

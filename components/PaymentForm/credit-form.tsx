@@ -5,6 +5,7 @@ import * as React from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 
 const TOTAL_ORDER_PRICE = 85000.00 
@@ -37,15 +38,14 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
   const installmentOptions = React.useMemo(() => {
     const options = []
     for (let i = 1; i <= MAX_INSTALLMENTS; i++) {
-      const { total, value } = calculateInstallmentValue(i, TOTAL_ORDER_PRICE)
+      const { value } = calculateInstallmentValue(i, TOTAL_ORDER_PRICE)
       
       let label = `${i}x de ${formatCurrency(value)}`
       
       if (i === 1) {
-        label += ` (À Vista - ${formatCurrency(total)})`
+        label += ` (À Vista)`
       } else {
-
-        label += ` (Total: ${formatCurrency(total)} sem juros)`
+        label += ` (Sem Juros)` 
       }
       
       options.push({ value: String(i), label: label })
@@ -53,9 +53,10 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
     return options
   }, [])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     if (name === 'number') {
+      // Garantir que a formatação do número de cartão não cause overflow no input
       const formatted = value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim()
       setFormData(prev => ({ ...prev, [name]: formatted }))
       return
@@ -63,12 +64,17 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  return (
-    <div className="space-y-6">
-      <h3 className="text-xl font-semibold">Detalhes do Cartão de Crédito</h3>
-      <p className="text-sm text-muted-foreground">Valor Total da Compra: <strong className="text-accent">{formatCurrency(TOTAL_ORDER_PRICE)}</strong></p>
+  const handleSelectChange = (value: string) => {
+    setFormData(prev => ({ ...prev, installments: value }))
+  }
 
-      <div className="grid gap-4">
+
+  return (
+    <div className="space-y-4 sm:space-y-6"> {/* Reduzido espaço vertical em telas pequenas */}
+      <h3 className="text-lg sm:text-xl font-semibold">Detalhes do Cartão de Crédito</h3> {/* Reduzido tamanho do título em mobile */}
+      <p className="text-xs sm:text-sm text-muted-foreground">Valor Total da Compra: <strong className="text-accent">{formatCurrency(TOTAL_ORDER_PRICE)}</strong></p> {/* Reduzido tamanho do texto de preço */}
+
+      <div className="grid gap-3 sm:gap-4"> {/* Reduzido espaço entre campos */}
         <Label htmlFor="card-number">Número do Cartão</Label>
         <Input
           id="card-number"
@@ -76,7 +82,7 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
           type="text"
           placeholder="XXXX XXXX XXXX XXXX"
           value={formData.number}
-          onChange={handleChange}
+          onChange={handleInputChange}
           maxLength={19}
           required
         />
@@ -88,11 +94,12 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
           type="text"
           placeholder="NOME COMPLETO"
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
         />
         
-        <div className="grid grid-cols-3 gap-4">
+        {/* Grid ajustado para mobile: menos gap e mantendo 3 colunas */}
+        <div className="grid grid-cols-3 gap-3">
           <div className="col-span-2">
             <Label htmlFor="card-expiry">Validade (MM/AA)</Label>
             <Input
@@ -101,7 +108,7 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
               type="text"
               placeholder="MM/AA"
               value={formData.expiry}
-              onChange={handleChange}
+              onChange={handleInputChange}
               maxLength={5}
               required
             />
@@ -114,7 +121,7 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
               type="text"
               placeholder="CVC"
               value={formData.cvc}
-              onChange={handleChange}
+              onChange={handleInputChange}
               maxLength={3}
               required
             />
@@ -123,19 +130,18 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
         
         <div>
           <Label htmlFor="installments">Parcelamento (Em até 12x Sem Juros)</Label>
-          <select
-            id="installments"
-            name="installments"
-            value={formData.installments}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-border rounded-lg bg-input focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
-          >
-            {installmentOptions.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+          <Select value={formData.installments} onValueChange={handleSelectChange}>
+            <SelectTrigger id="installments" name="installments" className="w-full">
+              <SelectValue placeholder="Selecione o número de parcelas" />
+            </SelectTrigger>
+            <SelectContent>
+              {installmentOptions.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </div>
       
@@ -143,6 +149,7 @@ export function CreditCardForm({ onSubmit, isProcessing }: { onSubmit: () => voi
         type="button" 
         onClick={onSubmit} 
         disabled={isProcessing} 
+        size="lg" // Mantém o botão grande e clicável
         className="w-full bg-accent hover:bg-accent/90 text-white"
       >
         {isProcessing ? "Processando..." : "Pagar com Cartão"}

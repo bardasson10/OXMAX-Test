@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className={isDark ? "dark" : ""}>
-      <div className="min-h-screen w-fit bg-background text-foreground transition-colors duration-200">
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
         <Header isDark={isDark} setIsDark={setIsDark} />
         
         <main>{children}</main>
